@@ -26,32 +26,55 @@ function limpiarClases() {
   document.querySelector(".number").classList.remove("spade");
 }
 
-function card() {
-  limpiarClases();
+function dibujarCarta(palo, numero) {
+  //   limpiarClases();
 
-  document.querySelector(".number").classList.add(generateRandomPalo());
-  document.querySelector(".number").innerHTML = generateRandomNumber();
+  let carta = document.createElement("div");
+  carta.classList.add("card");
+
+  let contenido = document.createElement("span");
+  contenido.classList.add("number", palo);
+  contenido.innerHTML = numero;
+
+  carta.appendChild(contenido);
+  return carta;
 }
 
-var inputValue = document.getElementById("input").value;
 var listaCartas = [];
 
 function generadorDeCartas() {
+  var inputValue = document.getElementById("input").value;
+  let containerCartas = document.querySelector(".container-card");
+  if (containerCartas != null) {
+    document.querySelector(".padre").removeChild(containerCartas);
+  }
+
+  console.log("Container ", containerCartas);
+  //   document.removeChild(containerCartas);
+  let newContainerCartas = document.createElement("div");
+  newContainerCartas.classList.add("container-card");
+  let padre = document.querySelector(".padre");
+  padre.appendChild(newContainerCartas);
+
   for (var i = 0; i < inputValue; i++) {
-    card();
-    listaCartas.push(listaCartas[number]);
+    let palo = generateRandomPalo();
+    let numero = generateRandomNumber();
+
+    let cartaGenerada = dibujarCarta(palo, numero);
+    console.log("Carta ", cartaGenerada);
+    newContainerCartas.appendChild(cartaGenerada);
   }
 }
 
 window.onload = function() {
   //write your code here
 
-  card();
-  let btn = document.getElementById("draw");
+  //   card();
+  //   let btn = document.getElementById("draw");
 
-  btn.addEventListener("click", card);
+  //   btn.addEventListener("click", card);
 
-  generadorDeCartas();
+  //   generadorDeCartas();
 
   var botonGenerador = document.getElementById("draw");
 
