@@ -50,7 +50,6 @@ function generadorDeCartas() {
   }
 
   console.log("Container ", containerCartas);
-  //   document.removeChild(containerCartas);
   let newContainerCartas = document.createElement("div");
   newContainerCartas.classList.add("container-card");
   let padre = document.querySelector(".padre");
@@ -67,15 +66,6 @@ function generadorDeCartas() {
 }
 
 window.onload = function() {
-  //write your code here
-
-  //   card();
-  //   let btn = document.getElementById("draw");
-
-  //   btn.addEventListener("click", card);
-
-  //   generadorDeCartas();
-
   var botonGenerador = document.getElementById("draw");
 
   botonGenerador.addEventListener("click", generadorDeCartas);
